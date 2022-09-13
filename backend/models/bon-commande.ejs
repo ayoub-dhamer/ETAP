@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      table,
+      td,
+      th {
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <table style="text-align: center; border-collapse: collapse; float: right">
+      <tr>
+        <th>
+          BON DE COMMANDE N°
+          <br />
+          DSP/<%= id %>
+        </th>
+      </tr>
+    </table>
+    <br />
+    <br />
+
+    <p style="position: relative; left: 75%">
+      Date : <%= date %><br />
+      Contact : <%= contact %>
+    </p>
+
+    <hr />
+
+    <h2>SUPPLIER :</h2>
+
+    <p>
+      ETAP <br />
+      54 AVENUE MED V <br />
+      1002 TUNIS <br />
+      FAX : 71 285 280/ 71 285 290 <br />
+      TEL : 71 285 300
+    </p>
+
+    <hr style="height: 100px; width: 5px; position: relative; bottom: 175px" />
+
+    <h2 style="position: relative; left: 65%; bottom: 285px">DELIVER TO :</h2>
+    <p style="position: relative; left: 65%; bottom: 285px">
+      <%= client.fullName %> <br />
+      <%= client.adress %> <br />
+      FAX : <%= client.fax %> <br />
+      TEL : <%= client.phone %>
+    </p>
+
+    <div style="position: relative; bottom: 250px">
+      <table>
+        <tr>
+          <th>
+            Achat en Suspension de la TVA selon Disposition du Décret-Loi N.
+            85-9 du 14/09/1985 tel que modifié par la Loi N. 87-9 du 6/3/1987
+            Attestation N. <%= id %>
+          </th>
+        </tr>
+      </table>
+
+      <p>
+        DELIVERY DATE : <%= delivery_date %> VIA : <%= client.fullName %> PURCH.
+        DOC. AMOUNT :<%= total%> CURRENCY : TND PAYMENT TERMS : <%=
+        payment_terms %>
+      </p>
+
+      <hr />
+
+      <table style="border-collapse: collapse">
+        <tr>
+          <th>Item N°</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Description</th>
+          <th>Unit Price</th>
+          <th>Total Price</th>
+        </tr>
+        <% list.forEach(item => { %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.unit %></td>
+          <td><%= item.des %></td>
+          <td><%= item.price %></td>
+          <td><%= item.total %></td>
+        </tr>
+        <% }); %>
+        <tr>
+          <th colspan="5">Total</th>
+          <th><%= total %></th>
+        </tr>
+        <tr>
+          <th colspan="6">
+            "THE ABOVE PURCHASE ORDER NUMBER MUST BE QUOTED ON ALL INVOICES,
+            ADVICE AND DISPATCH NOTES, CORRESPONDENCE AND PACKAGES"
+          </th>
+        </tr>
+      </table>
+
+      <h3 style="text-align: center">NOTES</h3>
+      <p>
+        1. The Acceptance copy of this order must be signed and returned within
+        14 days of the above date. <br />
+        2. No amendment or variation of this order shall be valid unless given
+        in written on the official amendment Form.
+      </p>
+    </div>
+  </body>
+</html>
